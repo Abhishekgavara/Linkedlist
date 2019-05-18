@@ -1,0 +1,60 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+
+class Linkedlist {
+    Node head;
+    class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+            next=null;
+        }
+    }
+    void insert(int data,int n){
+        Node p=new Node(data);
+        if(n==0){
+            p.next=head;
+            head=p;
+        }
+        
+        else{
+            Node q=head;
+            for(int i=0;i<n-1;i++){
+                q=q.next;
+            }
+            if(q==null){
+                System.out.println("No output bro");
+            }
+            else{
+                p.next=q.next;
+                q.next=p;
+            }
+        }
+            
+            
+        }
+        
+        
+    void traversal(){
+        
+        Node p=head;
+        while(p!=null){
+            
+            System.out.println(p.data);
+            p=p.next;
+        }
+    }
+        
+        
+        
+    
+	public static void main (String[] args) {
+		Linkedlist l=new Linkedlist();
+		l.insert(1,0);
+		l.insert(3,1);
+		l.insert(5,0);
+		l.traversal();
+	}
+}
