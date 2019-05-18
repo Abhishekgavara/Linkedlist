@@ -1,3 +1,4 @@
+
 /*package whatever //do not write package name here */
 
 import java.io.*;
@@ -40,11 +41,15 @@ class Linkedlist {
     void traversal(){
         
         Node p=head;
+        int count=0;
         while(p!=null){
             
             System.out.println(p.data);
+            count++;
             p=p.next;
+            
         }
+        System.out.println(count);
     }
         
         
@@ -53,8 +58,9 @@ class Linkedlist {
 	public static void main (String[] args) {
 		Linkedlist l=new Linkedlist();
 		l.insert(1,0);
-		l.insert(3,1);
+		l.insert(6,1);
 		l.insert(5,0);
 		l.traversal();
 	}
 }
+
