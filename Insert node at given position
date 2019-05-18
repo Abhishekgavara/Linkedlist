@@ -51,6 +51,19 @@ class Linkedlist {
         }
         System.out.println(count);
     }
+       
+    void search(int k){
+        Node p=head;
+        while(p!=null && p.data!=k)
+            p=p.next;
+            
+        if(p.data==k)
+        System.out.println("found");
+        else
+            System.out.println("not found");
+        
+        
+    }
         
         
         
