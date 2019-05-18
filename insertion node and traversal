@@ -1,0 +1,47 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+
+class Linkedlist
+{
+    Node head;
+    class Node
+    {
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+         next=null;
+        }
+    }    
+        void insert(int data){
+            Node p=new Node(data);
+            
+            p.next=head;
+            head=p;
+            
+            
+        }
+        
+        
+        
+        
+        void traversal(){
+            Node p=head;
+            while(p!=null){
+                System.out.println(p.data);
+                p=p.next;
+            }
+            
+        }
+        
+        
+        
+    
+	public static void main (String[] args) {
+		Linkedlist l=new Linkedlist();
+		l.insert(1);
+		l.insert(2);
+		l.traversal();
+	}
+}
