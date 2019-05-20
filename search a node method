@@ -1,0 +1,10 @@
+        boolean search(int key){
+            Node p=head;
+            while(p!=null && p.data!=key){
+                p=p.next;
+            }
+            if(p==null)
+            return false;
+            else
+            return true;
+        }
