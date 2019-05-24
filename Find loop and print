@@ -1,0 +1,82 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+
+class Linkedlist
+{
+    Node head;
+    class Node
+    {
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+         next=null;
+        }
+    }    
+        void insert(int data){
+            Node p=new Node(data);
+            
+            p.next=head;
+            head=p;
+            
+            
+        }
+        
+        void insertloop(){
+            Node p=head;
+            
+            p.next.next.next.next=p.next;
+            
+        }
+        
+        
+         int detectLoop() 
+    { 
+        Node p,q = head; 
+        while (p != null && q!=null && q.next!= null) { 
+            p=p.next; 
+           q= q.next.next; 
+            if (p == q) { 
+                System.out.println("Found loop"); 
+                Print(q.next);
+                return 1; 
+            } 
+        } 
+        return 0; 
+    } 
+    void Print(Node q){
+        Node p=head;
+         while(p!=q){
+             System.out.println(p.data);
+             p=p.next;
+                                                                    
+         }
+         if(p==q){
+             System.out.println(p.data);
+             p=p.next;
+         }
+        while(p!=q){
+            System.out.println(p.data);
+            p=p.next;
+        }
+        
+    }
+        
+        
+        
+        
+        
+        
+
+    
+	public static void main (String[] args) {
+		Linkedlist l=new Linkedlist();
+		l.insert(1);
+		l.insert(2);
+		l.insert(3);
+		l.insert(4);
+		l.insertloop();
+		l.detectLoop();
+	}
+}
