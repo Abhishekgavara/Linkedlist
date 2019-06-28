@@ -1,82 +1,77 @@
 /*package whatever //do not write package name here */
 
 import java.io.*;
+import java.util.*;
 
-class Linkedlist
-{
-    Node head;
-    class Node
-    {
-        int data;
+class Linkedlist {
+    static Node head;
+    
+    class Node{
         Node next;
+        int data;
         Node(int data){
             this.data=data;
-         next=null;
         }
-    }    
+    }
+        
         void insert(int data){
-            Node p=new Node(data);
+            Node q=new Node(data);
             
-            p.next=head;
-            head=p;
-            
-            
+            q.next=head;
+            head=q;
         }
         
-        void insertloop(){
+        void traversal(Node head){
             Node p=head;
-            
-            p.next.next.next.next=p.next;
+            while(p!=null){
+                System.out.println(p.data);
+                p=p.next;
+            }
             
         }
-        
-        
-         int detectLoop() 
-    { 
-        Node p,q = head; 
-        while (p != null && q!=null && q.next!= null) { 
-            p=p.next; 
-           q= q.next.next; 
-            if (p == q) { 
-                System.out.println("Found loop"); 
-                Print(q.next);
-                return 1; 
-            } 
-        } 
-        return 0; 
-    } 
-    void Print(Node q){
+      void insertLoop(Node head){
+          Node p=head;
+          p.next.next.next.next.next=p.next.next.next;
+          
+      }
+    
+    boolean findLoop(Node head){
         Node p=head;
-         while(p!=q){
+        HashSet<Node> s=new HashSet<>();
+        while(p!=null){
+            
+        
+        if(s.contains(p)){
+            Print(p);
+        return true;
+        
+        }
+        s.add(p);
+        
+        p=p.next;
+        
+        }
+        return false;
+    }
+        void Print(Node r){
+        Node p=r;
+         while(p.next!=r){
              System.out.println(p.data);
              p=p.next;
                                                                     
          }
-         if(p==q){
-             System.out.println(p.data);
-             p=p.next;
-         }
-        while(p!=q){
-            System.out.println(p.data);
-            p=p.next;
-        }
-        
+         System.out.println(p.data);
+         
     }
-        
-        
-        
-        
-        
-        
 
-    
 	public static void main (String[] args) {
 		Linkedlist l=new Linkedlist();
 		l.insert(1);
 		l.insert(2);
 		l.insert(3);
 		l.insert(4);
-		l.insertloop();
-		l.detectLoop();
+		l.insert(5);
+		l.insertLoop(head);
+		System.out.println(l.findLoop(head));
 	}
 }
