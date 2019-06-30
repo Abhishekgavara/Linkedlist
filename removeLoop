@@ -1,0 +1,84 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.*;
+
+class Linkedlist {
+    static Node head;
+    
+    class Node{
+        Node next;
+        int data;
+        Node(int data){
+            this.data=data;
+        }
+    }
+        
+        void insert(int data){
+            Node q=new Node(data);
+            
+            q.next=head;
+            head=q;
+        }
+        
+        void traversal(Node head){
+            Node p=head;
+            while(p!=null){
+                System.out.println(p.data);
+                p=p.next;
+            }
+            
+        }
+      void insertLoop(Node head){
+          Node p=head;
+          p.next.next.next.next.next=p.next.next.next;
+          
+      }
+    
+    void removeLoop(Node head){
+        Node p=head;
+        HashSet<Node> s=new HashSet<>();
+        while(p!=null){
+            
+        
+        if(s.contains(p)){
+        
+        remove(p);
+        break;
+        }
+        s.add(p);
+        
+        p=p.next;
+        
+        }
+    }
+    void remove(Node p){
+        Node q=p;
+        while(q.next!=p){
+            q=q.next;
+        }
+        q.next=null;
+    }
+        void Print(Node r){
+        Node p=r;
+         while(p.next!=r){
+             System.out.println(p.data);
+             p=p.next;
+                                                                    
+         }
+         System.out.println(p.data);
+         
+    }
+
+	public static void main (String[] args) {
+		Linkedlist l=new Linkedlist();
+		l.insert(1);
+		l.insert(2);
+		l.insert(3);
+		l.insert(4);
+		l.insert(5);
+		l.insertLoop(head);
+		l.removeLoop(head);
+		l.traversal(head);
+	}
+}
